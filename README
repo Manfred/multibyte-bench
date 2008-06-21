@@ -1,0 +1,4 @@
+Multibyte Bench
+===============
+
+A repository of scripts to test the speed of a String implementation in Ruby for common operations.
