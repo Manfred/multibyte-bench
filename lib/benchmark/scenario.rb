@@ -13,15 +13,16 @@ module Benchmark #:nodoc:
     end
     
     def self.format_method(method)
-      method[5..-1].gsub(/_/, ' ').capitalize
+      # We assume the terminal is 80 characters long, that leaves us 36 characters for the method name
+      name = method[5..-1].gsub(/_/, ' ').capitalize
+      name[0..35]
     end
     
     def self.run
       test = new
-      
       title = self.to_s.gsub(/test/i, '').capitalize
       puts "#{title}\n#{'='*title.length}"
-      Benchmark.bm(12) do |bench|
+      Benchmark.bm(36) do |bench|
         scenarios.sort.each do |method|
           test.setup
           10.times { test.send(method) } # Warmup

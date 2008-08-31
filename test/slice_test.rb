@@ -11,5 +11,9 @@ class SliceTest < Benchmark::Scenario
     end
   end
 
+  def test_navigation_index
+    STRINGS.map { |name| name.first }.sort
+  end
+
   run
 end
